@@ -1,0 +1,1 @@
+Activate a folder for Structurizr Lite running in docker
