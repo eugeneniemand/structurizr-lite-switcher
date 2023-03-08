@@ -14,26 +14,50 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "configuration":[
+      {
+        "title": "Structurizr Lite Switcher",
+        "properties": {
+          "structurizr-lite-switcher.port":{
+            "type": "number",
+            "default": 9053,
+            "description": "This is the host port that will be mapped to the port of the container"
+          }
+        }
+      }
+    ],
     "commands": [
       {
         "command": "structurizr-lite-switcher.activate",
-        "title": "Structurizr Lite Switcher: Activate Folder"
+        "title": "Activate Structurizr Workspace"
       },
       {
         "command": "structurizr-lite-switcher.pullLatestImage",
-        "title": "Structurizr Lite Switcher: Pull Latest Image"
+        "title": "Pull Latest Structurizr Image"
+      }
+      ,
+      {
+        "command": "structurizr-lite-switcher.openBrowser",
+        "title": "Open Structurizr in Browser"
       }
     ],
     "menus": {
-      "editor/context":[
+      "editor/context": [
         {
+          "when": "resourceFilename == workspace.dsl",
           "command": "structurizr-lite-switcher.activate",
           "group": "structurizr-lite-switcher"
         }
       ],
       "explorer/context": [
         {
+          "when": "resourceFilename == workspace.dsl",
           "command": "structurizr-lite-switcher.activate",
+          "group": "structurizr-lite-switcher"
+        },
+        {
+          "when": "resourceFilename == workspace.dsl",
+          "command": "structurizr-lite-switcher.openBrowser",
           "group": "structurizr-lite-switcher"
         },
         {
@@ -55,6 +79,7 @@
     "@types/glob": "^8.0.1",
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
+    "@types/node-fetch": "^2.6.2",
     "@types/vscode": "^1.75.0",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.49.0",
@@ -65,6 +90,8 @@
     "typescript": "^4.9.4"
   },
   "dependencies": {
+    "node-bash": "^5.0.1",
+    "node-fetch": "^2.6.9",
     "node-powershell": "^5.0.1"
   }
 }
