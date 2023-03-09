@@ -3,6 +3,7 @@
   "displayName": "Structurizr Lite Switcher",
   "description": "",
   "version": "0.0.1",
+  "icon": "structurizr-workspace-switcher.png",
   "engines": {
     "vscode": "^1.75.0"
   },
